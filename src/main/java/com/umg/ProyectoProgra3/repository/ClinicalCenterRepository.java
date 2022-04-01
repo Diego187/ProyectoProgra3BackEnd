@@ -1,6 +1,6 @@
-package repository;
+package com.umg.ProyectoProgra3.repository;
 
-import entity.ClinicalCenter;
+import com.umg.ProyectoProgra3.entity.ClinicalCenter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

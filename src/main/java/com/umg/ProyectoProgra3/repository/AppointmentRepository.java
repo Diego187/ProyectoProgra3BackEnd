@@ -1,6 +1,6 @@
-package repository;
+package com.umg.ProyectoProgra3.repository;
 
-import entity.Appointment;
+import com.umg.ProyectoProgra3.entity.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
