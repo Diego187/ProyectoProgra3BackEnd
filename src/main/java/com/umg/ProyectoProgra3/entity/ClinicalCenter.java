@@ -18,6 +18,30 @@ public class ClinicalCenter {
     @Column(name = "address")
     private String address;
 
+    public Integer getIdclinicalCenter() {
+        return idclinicalCenter;
+    }
+
+    public void setIdclinicalCenter(Integer idclinicalCenter) {
+        this.idclinicalCenter = idclinicalCenter;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Column(name = "phone")
     private String phone;
 

@@ -20,6 +20,30 @@ public class Appointment implements Serializable {
     @Column(name = "date")
     private Date date;
 
+    public Integer getIdappointment() {
+        return idappointment;
+    }
+
+    public void setIdappointment(Integer idappointment) {
+        this.idappointment = idappointment;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(String diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
     @Column(name = "diagnostic")
     private String diagnostic;
 
