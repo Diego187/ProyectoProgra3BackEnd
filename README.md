@@ -1,7 +1,7 @@
 # ProyectoProgra3BackEnd
 Este es el backend del proyecto final de Programacion 3
 
-## Integrantes
+## Creadores
 - Cristian Caceres
 - Diego Iboy
 - Pablo Rixtun
