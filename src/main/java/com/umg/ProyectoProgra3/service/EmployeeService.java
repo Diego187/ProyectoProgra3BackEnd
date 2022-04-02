@@ -1,16 +1,12 @@
 package com.umg.ProyectoProgra3.service;
-import java.util.Optional;
+import java.util.List;
 
 import com.umg.ProyectoProgra3.entity.Employee;
 import com.umg.ProyectoProgra3.repository.ClinicalCenterRepository;
 import com.umg.ProyectoProgra3.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +18,11 @@ public class EmployeeService {
     EmployeeRepository employeeRepository;
 
     @Autowired
-    ClinicalCenterRepository clinicalCenterRepository;
+    ClinicalCenterRepository EmployeeRepository;
 
-
+    @GetMapping(path = "/find")
+    private List<Employee> find() {
+        return employeeRepository.findAll();
+    }
 
 }
