@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name ="client")
+@Table(name ="user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 3760988163877761705L;
@@ -20,13 +20,13 @@ public class User implements Serializable {
     @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "secondName")
+    @Column(name = "secundName")
     private String secondName;
 
     @Column(name = "firstLastName")
     private String firstLastName;
 
-    @Column(name = "secondLastName")
+    @Column(name = "secundLastName")
     private String secondLastName;
 
     @Column(name = "user")
@@ -35,4 +35,59 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
+    public String getIdclient() {
+        return idclient;
+    }
+
+    public void setIdclient(String idclient) {
+        this.idclient = idclient;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getFirstLastName() {
+        return firstLastName;
+    }
+
+    public void setFirstLastName(String firstLastName) {
+        this.firstLastName = firstLastName;
+    }
+
+    public String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
