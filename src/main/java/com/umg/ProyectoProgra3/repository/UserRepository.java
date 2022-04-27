@@ -5,8 +5,10 @@ import com.umg.ProyectoProgra3.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Optional;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Serializable>{
-
+    public List<User> findByUserAndPassword(String user, String password);
 }
