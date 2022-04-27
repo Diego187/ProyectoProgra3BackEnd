@@ -1,6 +1,6 @@
 package com.umg.ProyectoProgra3.service;
 
-public class LoginServer {
+public class LoginService {
 
 
 

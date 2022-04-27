@@ -29,44 +29,10 @@ public class User implements Serializable {
     @Column(name = "secondLastName")
     private String secondLastName;
 
+    @Column(name = "user")
+    private String user;
 
-    public String getIdclient() {
-        return idclient;
-    }
+    @Column(name = "password")
+    private String password;
 
-    public void setIdclient(String idclient) {
-        this.idclient = idclient;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getFirstLastName() {
-        return firstLastName;
-    }
-
-    public void setFirstLastName(String firstLastName) {
-        this.firstLastName = firstLastName;
-    }
-
-    public String getSecondLastName() {
-        return secondLastName;
-    }
-
-    public void setSecondLastName(String secondLastName) {
-        this.secondLastName = secondLastName;
-    }
 }
