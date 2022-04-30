@@ -44,4 +44,10 @@ public class CreateUserService {
         return userRepository.findAll();
     }
 
+    @PostMapping(path = "/modify")
+    private User modify(@RequestBody User user){
+        userRepository.save(user);
+        return  user;
+    }
+
 }
