@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
@@ -23,6 +24,7 @@ public class CreateUserService {
         userRepository.save(user);
         System.out.println("Usuario creado " + newUser);
         return  user;
+
     }
 
     private String newUser(User user){
