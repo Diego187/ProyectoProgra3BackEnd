@@ -19,10 +19,8 @@ public class CreateUserService {
     @PostMapping(path = "/add")
     private String add(@RequestBody User user){
         String newUser = newUser(user);
-
         user.setUser(newUser);
         userRepository.save(user);
-
         return newUser;
     }
 
@@ -32,12 +30,10 @@ public class CreateUserService {
         userList = find();
         int cont = userList.size();
         cont = cont + 1;
-
         String first = String.valueOf(user.getFirstName().charAt(0));
         newUser = first + user.getFirstLastName();
         newUser = newUser.toUpperCase();
         newUser = newUser + cont;
-
         return newUser;
     }
 
@@ -45,4 +41,5 @@ public class CreateUserService {
     private List<User> find(){
         return userRepository.findAll();
     }
+
 }
