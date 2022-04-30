@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
@@ -17,11 +16,10 @@ public class CreateUserService {
     UserRepository userRepository;
 
     @PostMapping(path = "/add")
-    private String add(@RequestBody User user){
+    private List<User> add(@RequestBody User user){
         String newUser = newUser(user);
         user.setUser(newUser);
-        userRepository.save(user);
-        return newUser;
+        return  userRepository.findAll();
     }
 
     private String newUser(User user){
