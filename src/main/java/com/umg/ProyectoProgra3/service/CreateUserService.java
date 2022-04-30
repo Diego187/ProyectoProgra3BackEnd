@@ -2,13 +2,11 @@ package com.umg.ProyectoProgra3.service;
 
 import com.umg.ProyectoProgra3.entity.User;
 import com.umg.ProyectoProgra3.repository.UserRepository;
-import org.hibernate.loader.plan.exec.process.internal.EntityReturnReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
