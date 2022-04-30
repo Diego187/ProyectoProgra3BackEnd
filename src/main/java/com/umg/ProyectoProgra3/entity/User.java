@@ -15,7 +15,7 @@ public class User implements Serializable {
     @Basic(optional = false)
 
     @Column(name = "idclient")
-    private String idclient;
+    private int idclient;
 
     @Column(name = "firstName")
     private String firstName;
@@ -35,11 +35,14 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    public String getIdclient() {
+    @Column(name = "telephone")
+    private String telephone;
+
+    public int getIdclient() {
         return idclient;
     }
 
-    public void setIdclient(String idclient) {
+    public void setIdclient(int idclient) {
         this.idclient = idclient;
     }
 
@@ -89,5 +92,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }

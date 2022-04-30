@@ -5,7 +5,9 @@ import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/user")
@@ -15,8 +17,28 @@ public class CreateUserService {
     UserRepository userRepository;
 
     @PostMapping(path = "/add")
-    private void add(@RequestBody User user){
+    private String add(@RequestBody User user){
+        String newUser = newUser(user);
+
+        user.setUser(newUser);
         userRepository.save(user);
+
+        return newUser;
+    }
+
+    private String newUser(User user){
+        String newUser = "";
+        List<User> userList = new ArrayList<>();
+        userList = find();
+        int cont = userList.size();
+        cont = cont + 1;
+
+        String first = String.valueOf(user.getFirstName().charAt(0));
+        newUser = first + user.getFirstLastName();
+        newUser = newUser.toUpperCase();
+        newUser = newUser + cont;
+
+        return newUser;
     }
 
     @GetMapping(path = "/findAll")
