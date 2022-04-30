@@ -2,6 +2,7 @@ package com.umg.ProyectoProgra3.service;
 
 import com.umg.ProyectoProgra3.entity.User;
 import com.umg.ProyectoProgra3.repository.UserRepository;
+import org.hibernate.loader.plan.exec.process.internal.EntityReturnReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +17,12 @@ public class CreateUserService {
     UserRepository userRepository;
 
     @PostMapping(path = "/add")
-    private List<User> add(@RequestBody User user){
+    private User add(@RequestBody User user){
         String newUser = newUser(user);
         user.setUser(newUser);
-        return  userRepository.findAll();
+        userRepository.save(user);
+        System.out.println("Usuario creado " + newUser);
+        return  user;
     }
 
     private String newUser(User user){
