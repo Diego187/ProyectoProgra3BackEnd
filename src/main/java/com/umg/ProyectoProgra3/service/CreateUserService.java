@@ -47,7 +47,7 @@ public class CreateUserService {
     @PostMapping(path = "/modify")
     private User modify(@RequestBody User user){
         userRepository.save(user);
-        return  user;
+        return user;
     }
 
 }
