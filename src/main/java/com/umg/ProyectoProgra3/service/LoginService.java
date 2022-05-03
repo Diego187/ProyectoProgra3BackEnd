@@ -21,8 +21,6 @@ public class LoginService {
  //Servicio que devuelve un objeto del user si lo encuentra si es en blanco o null es porque no pasa la validacion
     @PostMapping(path = "/user")
     private List<User>  loginTeacher(@RequestBody Login credentials){
-        System.out.println("ingresa al servicio");
-        System.out.println(credentials);
         return userRepository.findByUserAndPassword (credentials.getUser(), credentials.getPass());
     }
 
