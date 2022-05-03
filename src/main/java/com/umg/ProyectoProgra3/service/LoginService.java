@@ -24,11 +24,4 @@ public class LoginService {
         return userRepository.findByUserAndPassword (credentials.getUser(), credentials.getPass());
     }
 
-
-
-
-
-
-
-
 }
