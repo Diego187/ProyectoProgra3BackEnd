@@ -16,11 +16,11 @@ public class CreateUserService {
     UserRepository userRepository;
 
     @PostMapping(path = "/add")
-    private String add(@RequestBody User user){
+    private User add(@RequestBody User user){
         String newUser = newUser(user);
         user.setUser(newUser);
         userRepository.save(user);
-        return newUser;
+        return user;
     }
 
     private String newUser(User user){
