@@ -24,14 +24,12 @@ public class CreateUserService {
     }
 
     private String newUser(User user){
-        String newUser = "";
-        List<User> userList = new ArrayList<>();
-        userList = find();
+        List<User> userList = find();
         int cont = userList.size();
         cont = cont + 1;
 
         String first = String.valueOf(user.getFirstName().charAt(0));
-        newUser = first + user.getFirstLastName();
+        String newUser = first + user.getFirstLastName();
         newUser = newUser.toUpperCase();
         newUser = newUser + cont;
         return newUser;
