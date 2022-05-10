@@ -2,7 +2,6 @@ package com.umg.ProyectoProgra3.service;
 
 import com.umg.ProyectoProgra3.entity.User;
 import com.umg.ProyectoProgra3.repository.UserRepository;
-import org.hibernate.loader.plan.exec.process.internal.EntityReturnReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,19 +20,16 @@ public class CreateUserService {
         String newUser = newUser(user);
         user.setUser(newUser);
         userRepository.save(user);
-        System.out.println("Usuario creado " + newUser);
-        return  user;
+        return user;
     }
 
     private String newUser(User user){
-        String newUser = "";
-        List<User> userList = new ArrayList<>();
-        userList = find();
+        List<User> userList = find();
         int cont = userList.size();
         cont = cont + 1;
 
         String first = String.valueOf(user.getFirstName().charAt(0));
-        newUser = first + user.getFirstLastName();
+        String newUser = first + user.getFirstLastName();
         newUser = newUser.toUpperCase();
         newUser = newUser + cont;
         return newUser;
