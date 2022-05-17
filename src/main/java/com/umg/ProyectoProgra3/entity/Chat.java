@@ -6,6 +6,7 @@ public class Chat {
     String name;
     String description;
     ArrayList<User> members ;
+    ArrayList<Message> messages;
 
     public String getName() {
         return name;
@@ -29,5 +30,13 @@ public class Chat {
 
     public void setMembers(ArrayList<User> members) {
         this.members = members;
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 }
