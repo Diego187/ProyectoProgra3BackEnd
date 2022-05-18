@@ -1,6 +1,5 @@
 package com.umg.ProyectoProgra3;
 
-import com.umg.ProyectoProgra3.entity.Chat;
 import com.umg.ProyectoProgra3.entity.Message;
 import com.umg.ProyectoProgra3.entity.User;
 import org.springframework.boot.SpringApplication;
@@ -12,14 +11,14 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class ProyectoProgra3Application {
 
-	public static ArrayList<Chat> chats;
+	//public static ArrayList<Chat> chats;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoProgra3Application.class, args);
 
 		//Practicas
 
-		chats = new ArrayList<>();
+		/*chats = new ArrayList<>();
 		ArrayList<User> members = new ArrayList<>();
 		ArrayList<Message> messages = new ArrayList<>();
 
@@ -58,7 +57,7 @@ public class ProyectoProgra3Application {
 		chat2.setMembers(members);
 		chat2.setMessages(messages);
 		chats.add(chat2);
-
+*/
 	}
 
 }
