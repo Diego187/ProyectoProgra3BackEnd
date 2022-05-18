@@ -1,6 +1,8 @@
 package com.umg.ProyectoProgra3.service;
 
 import com.umg.ProyectoProgra3.entity.Channel;
+import com.umg.ProyectoProgra3.repository.ChannelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,9 @@ import java.util.List;
 @RequestMapping("/chat")
 @CrossOrigin
 public class ChatService {
+
+    @Autowired
+    ChannelRepository channelRepository;
 
     public void prueba(){
         Integer[] numbers = {1, 2, 3, 4, 5};
@@ -30,11 +35,8 @@ public class ChatService {
         });
     }
 
-    /*@GetMapping(path = "/find")
+    @GetMapping(path = "/find")
     private List<Channel> find(){
-        for (Channel channel : chats){
-            System.out.println(chat.getName());
-        }
-        return chats;
-    }*/
+        return channelRepository.findAll();
+    }
 }
