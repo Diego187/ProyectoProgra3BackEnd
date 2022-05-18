@@ -1,7 +1,9 @@
 package com.umg.ProyectoProgra3.service;
 
 import com.umg.ProyectoProgra3.entity.Channel;
+import com.umg.ProyectoProgra3.entity.Message;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
+import com.umg.ProyectoProgra3.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ public class ChatService {
 
     @Autowired
     ChannelRepository channelRepository;
+    MessageRepository messageRepository;
 
     public void prueba(){
         Integer[] numbers = {1, 2, 3, 4, 5};
@@ -39,4 +42,10 @@ public class ChatService {
     private List<Channel> find(){
         return channelRepository.findAll();
     }
+
+    @GetMapping(path = "/findIdchat")
+    private List<Message> findByMessageId(){
+        return messageRepository.findByMessageId();
+    }
+
 }

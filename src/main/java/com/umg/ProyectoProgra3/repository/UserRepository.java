@@ -14,8 +14,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Serializable>{
     public List<User> findByUserAndPassword(String user, String password);
 
-    @Query(value = "select * from user  where idclient = ?1", nativeQuery = true)
-    Optional<User> findByUser(int idcliente) ;
+    @Query(value = "select count(idclient) from user  ", nativeQuery = true)
+    int countUserBy() ;
 
 }
 

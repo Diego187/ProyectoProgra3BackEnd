@@ -38,6 +38,9 @@ public class CreateUserService {
         return userRepository.findAll();
     }
 
+    @GetMapping(path = "/count")
+    private int countUserBy() { return userRepository.countUserBy();}
+
     @PostMapping(path = "/modify")
     private User modify(@RequestBody User user){
         userRepository.save(user);

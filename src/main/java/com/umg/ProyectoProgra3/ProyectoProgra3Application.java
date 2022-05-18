@@ -4,9 +4,11 @@ import com.umg.ProyectoProgra3.entity.Message;
 import com.umg.ProyectoProgra3.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ProyectoProgra3Application {
@@ -15,6 +17,7 @@ public class ProyectoProgra3Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoProgra3Application.class, args);
+
 
 		//Practicas
 
@@ -59,5 +62,7 @@ public class ProyectoProgra3Application {
 		chats.add(chat2);
 */
 	}
+
+
 
 }
