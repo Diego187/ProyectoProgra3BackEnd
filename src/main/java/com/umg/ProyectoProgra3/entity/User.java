@@ -3,6 +3,7 @@ package com.umg.ProyectoProgra3.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name ="user")
@@ -37,6 +38,17 @@ public class User implements Serializable {
 
     @Column(name = "telephone")
     private String telephone;
+
+    @OneToMany(mappedBy = "userIdclient")
+    private List<Message> messageList;
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
 
     public int getIdclient() {
         return idclient;
