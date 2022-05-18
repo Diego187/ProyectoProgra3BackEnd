@@ -1,18 +1,12 @@
 package com.umg.ProyectoProgra3.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.umg.ProyectoProgra3.entity.User;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.List;
 
-
-@Repository("userRepository")
-public interface UserRepository extends JpaRepository<User, Serializable>{
+@Repository("messageRepository")
+public interface MessageRepository {
     public List<User> findByUserAndPassword(String user, String password);
-
-
 }
-
-
