@@ -1,7 +1,6 @@
 package com.umg.ProyectoProgra3.service;
 
-import com.umg.ProyectoProgra3.entity.Chat;
-import com.umg.ProyectoProgra3.entity.User;
+import com.umg.ProyectoProgra3.entity.Channel;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import rx.Observable;
 
 import java.util.List;
-
-import static com.umg.ProyectoProgra3.ProyectoProgra3Application.chats;
 
 @RestController
 @RequestMapping("/chat")
@@ -33,11 +30,11 @@ public class ChatService {
         });
     }
 
-    @GetMapping(path = "/find")
-    private List<Chat> find(){
-        for (Chat chat : chats){
+    /*@GetMapping(path = "/find")
+    private List<Channel> find(){
+        for (Channel channel : chats){
             System.out.println(chat.getName());
         }
         return chats;
-    }
+    }*/
 }
