@@ -39,7 +39,7 @@ public class Message implements Serializable {
         this.idmessage = idmessage;
     }
 
-    public String getDate() {
+   public String getDate() {
         return date;
     }
 
