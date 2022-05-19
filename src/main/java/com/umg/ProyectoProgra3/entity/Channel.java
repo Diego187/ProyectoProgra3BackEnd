@@ -20,8 +20,8 @@ public class Channel implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name="description")
-    private String description;
+    @Column(name="descripcion")
+    private String descripcion;
 
     @OneToMany(mappedBy = "channelIdchannel")
     private List<Message> messageList;
@@ -43,11 +43,11 @@ public class Channel implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        return descripcion;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.descripcion = description;
     }
 
     public List<Message> getMessageList() {

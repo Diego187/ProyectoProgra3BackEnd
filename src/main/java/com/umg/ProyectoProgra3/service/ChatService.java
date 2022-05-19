@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rx.Observable;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/chat")
@@ -20,6 +21,8 @@ public class ChatService {
 
     @Autowired
     ChannelRepository channelRepository;
+
+    @Autowired
     MessageRepository messageRepository;
 
     public void prueba(){
@@ -44,7 +47,7 @@ public class ChatService {
     }
 
     @GetMapping(path = "/findIdchat")
-    private List<Message> findByMessageId(){
+    private Optional<Message> findByMessageId(){
         return messageRepository.findByMessageId();
     }
 

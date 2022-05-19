@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 @Repository("messageRepository")
 public interface MessageRepository  extends JpaRepository<Message, Serializable> {
 
 
-    @Query(value = " SELECT userIdclient ,channelIdchannel , COUNT(*) as repeticiones FROM messag where userIdclient = 1 GROUP BY userIdclient ,channelIdchannel HAVING COUNT(*)>0",nativeQuery = true)
-    List<Message> findByMessageId();
+    @Query(value = " SELECT userIdclient ,channelIdchannel , COUNT(*) as repeticiones FROM message where userIdclient = 1 GROUP BY userIdclient ,channelIdchannel HAVING COUNT(*)>0",nativeQuery = true)
+    Optional<Message> findByMessageId();
 }
