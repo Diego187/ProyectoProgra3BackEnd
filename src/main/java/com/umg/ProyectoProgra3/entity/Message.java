@@ -13,8 +13,8 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
 
-    @Column(name = "idmessage")
-    private int idmessage;
+    //@Column(name = "idmessage")
+    //private int idmessage;
 
     @Column(name = "date")
     private String date;
@@ -31,13 +31,13 @@ public class Message implements Serializable {
     @Column(name = "userIdclient")
     private int userIdclient;
 
-    public int getIdmessage() {
+    /*public int getIdmessage() {
         return idmessage;
     }
 
     public void setIdmessage(int idmessage) {
         this.idmessage = idmessage;
-    }
+    }*/
 
     public String getDate() {
         return date;

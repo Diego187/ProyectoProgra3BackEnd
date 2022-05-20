@@ -42,8 +42,8 @@ public class ChatService {
     }
 
     @GetMapping(path = "/find")
-    private List<Channel> find(){
-        return channelRepository.findAll();
+    private List<Message> find(){
+        return messageRepository.findAll();
     }
 
     @GetMapping(path = "/findIdchat")

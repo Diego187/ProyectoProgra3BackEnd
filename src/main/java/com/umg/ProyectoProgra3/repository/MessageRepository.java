@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface MessageRepository  extends JpaRepository<Message, Serializable> {
 
 
-    @Query(value = " SELECT userIdclient ,channelIdchannel , COUNT(*) as repeticiones FROM message where userIdclient = 1 GROUP BY userIdclient ,channelIdchannel HAVING COUNT(*)>0",nativeQuery = true)
+    @Query(value = " SELECT user_idclient ,channel_idchannel , COUNT(*) as repeticiones FROM message where user_idclient = 1 GROUP BY user_idclient ,channel_idchannel HAVING COUNT(*)>0",nativeQuery = true)
     Optional<Message> findByMessageId();
 }
