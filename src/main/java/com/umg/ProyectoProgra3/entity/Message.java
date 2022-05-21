@@ -6,15 +6,14 @@ import java.io.Serializable;
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-
     private static final long serialVersionUID = 3760988163877761705L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
 
-    //@Column(name = "idmessage")
-    //private int idmessage;
+    @Column(name = "idmessage")
+    private int idmessage;
 
     @Column(name = "date")
     private String date;
@@ -31,15 +30,17 @@ public class Message implements Serializable {
     @Column(name = "userIdclient")
     private int userIdclient;
 
-    /*public int getIdmessage() {
+
+
+    public int getIdmessage() {
         return idmessage;
     }
 
     public void setIdmessage(int idmessage) {
         this.idmessage = idmessage;
-    }*/
+    }
 
-    public String getDate() {
+   public String getDate() {
         return date;
     }
 

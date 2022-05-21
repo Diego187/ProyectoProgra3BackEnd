@@ -1,18 +1,18 @@
 package com.umg.ProyectoProgra3.service;
 
-import com.umg.ProyectoProgra3.entity.Channel;
 import com.umg.ProyectoProgra3.entity.Message;
+import com.umg.ProyectoProgra3.entity.MessageIdchannel;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
+import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import rx.Observable;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/chat")
@@ -21,6 +21,9 @@ public class ChatService {
 
     @Autowired
     ChannelRepository channelRepository;
+
+    @Autowired
+    MessageIdchannelRepository messageIdchannelRepository;
 
     @Autowired
     MessageRepository messageRepository;
@@ -33,7 +36,7 @@ public class ChatService {
         Observable resultadoMap =
                 miObservable
                         .map((item) -> {
-                            return item * 10;
+                            return item ;
                         });
 
         resultadoMap.subscribe((item) -> {
@@ -41,14 +44,29 @@ public class ChatService {
         });
     }
 
-    @GetMapping(path = "/find")
-    private List<Message> find(){
-        return messageRepository.findAll();
+    public void prueba1(){
+
+
+
     }
 
-    @GetMapping(path = "/findIdchat")
-    private Optional<Message> findByMessageId(){
-        return messageRepository.findByMessageId();
+  /*  @GetMapping(path = "/find")
+    private List<Message> find(){
+        return messageRepository.findAll();
+    }*/
+
+    @GetMapping(path = "/find")
+    private Flux<Message> find(){
+        List<Message>  message = messageRepository.findAll();
+        Flux<Message> mensaje = Flux.fromIterable(message);
+        return mensaje;
+    }
+
+
+
+    @GetMapping(path = "/findIdchat/{idclient}")
+    private List<MessageIdchannel> findByMessageId(@PathVariable int idclient){
+        return messageIdchannelRepository.findByMessageId(idclient);
     }
 
 }
