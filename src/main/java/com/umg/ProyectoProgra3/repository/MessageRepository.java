@@ -9,7 +9,4 @@ import java.io.Serializable;
 @Repository("messageRepository")
 public interface MessageRepository  extends JpaRepository<Message, Serializable> {
 
-
-
-
 }

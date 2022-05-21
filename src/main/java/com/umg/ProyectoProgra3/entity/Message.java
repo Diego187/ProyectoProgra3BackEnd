@@ -30,7 +30,15 @@ public class Message implements Serializable {
     @Column(name = "userIdclient")
     private int userIdclient;
 
+    private String userUser;
 
+    public String getUserUser() {
+        return userUser;
+    }
+
+    public void setUserUser(String userUser) {
+        this.userUser = userUser;
+    }
 
     public int getIdmessage() {
         return idmessage;
