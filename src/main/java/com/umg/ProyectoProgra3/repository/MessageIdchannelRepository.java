@@ -11,4 +11,6 @@ public interface MessageIdchannelRepository  extends JpaRepository<MessageIdchan
 
     @Query(value = "   SELECT channel_idchannel,user_idclient from message m WHERE user_idclient =?1 GROUP by channel_idchannel,user_idclient ",nativeQuery = true)
     List<MessageIdchannel> findByMessageId(int idclient);
+
+
 }

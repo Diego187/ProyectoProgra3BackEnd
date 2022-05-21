@@ -35,8 +35,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>io.reactivex</groupId>
 			<artifactId>rxjava</artifactId>
@@ -47,8 +45,12 @@
 			<artifactId>rxjava-math</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-	</dependencies>
-
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>3.4.17</version>
+        </dependency>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
