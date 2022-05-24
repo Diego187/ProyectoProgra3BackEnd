@@ -83,8 +83,6 @@ public class ChatService {
                 }
             }
         }
-
-
         return channels;
     }
 
