@@ -1,6 +1,8 @@
 package com.umg.ProyectoProgra3.service;
 
 import antlr.debug.MessageAdapter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import com.umg.ProyectoProgra3.entity.*;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
@@ -88,14 +90,17 @@ public class ChatService {
 
     private void creatMessage(Chat dato){
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter dtfh = DateTimeFormatter.ofPattern("HH:mm:ss");
+
         Message mensaje = new Message();
         mensaje.setChannelIdchannel(dato.getChannelIdchannel());
         mensaje.setUserIdclient(dato.getUserIdclient());
         mensaje.setUserUser(dato.getUser());
         mensaje.setMessage("Bienvenido!");
         mensaje.setChannelIdchannel(1);
-        mensaje.setDate("2022");
-        mensaje.setTime("12:00");
+        mensaje.setDate(dtf.format(LocalDateTime.now()));
+        mensaje.setTime(dtfh.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
           }
 
