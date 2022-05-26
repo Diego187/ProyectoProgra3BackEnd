@@ -34,6 +34,8 @@ public class ChatService {
     @Autowired
     UserRepository userRepository;
 
+
+/*
     public void prueba(){
         Integer[] numbers = {1, 2, 3, 4, 5};
 
@@ -48,47 +50,40 @@ public class ChatService {
         resultadoMap.subscribe((item) -> {
             System.out.println("item:" + item);
         });
-    }
+    }*/
 
-    public void prueba1(){
-
-
-
-    }
-
-  /*  @GetMapping(path = "/find")
+    @GetMapping(path = "/find")
     private List<Message> find(){
         return messageRepository.findAll();
-    }*/
+    }
 
     @GetMapping(path = "/findAll")
     private List<Channel> findAll(){
-
         List<Channel> channels = new ArrayList<>();
         channels = channelRepository.findAll();
         List<Message> messages = new ArrayList<>();
-
-
         List<User> users = new ArrayList<>();
         users = userRepository.findAll();
-
-        for(Channel channel: channels){
+        for(Channel channel: channels) {
             messages = channel.getMessageList();
-            for(Message message: messages){
-                for(User user : users){
-                    if(message.getUserIdclient() == user.getIdclient()){
+            for (Message message : messages) {
+                for (User user : users) {
+                    if (message.getUserIdclient() == user.getIdclient()) {
                         message.setUserUser(user.getUser());
                         break;
                     }
                 }
             }
         }
-
-
         return channels;
     }
 
 
+
+    @PostMapping(path = "/add")
+    private Channel add(@RequestBody Channel channel){
+        return channelRepository.save(channel);
+    }
 
 
     @GetMapping(path = "/findIdchat/{idclient}")
