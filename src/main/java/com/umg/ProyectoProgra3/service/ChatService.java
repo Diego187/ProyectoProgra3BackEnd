@@ -94,7 +94,7 @@ public class ChatService {
     private void creatMessage(Chat dato){
 
         DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm");
 
         List<Channel> mensajes = channelRepository.findAll();
         int mayor=0;
