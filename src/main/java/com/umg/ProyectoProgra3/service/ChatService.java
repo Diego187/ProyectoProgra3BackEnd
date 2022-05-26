@@ -82,32 +82,22 @@ public class ChatService {
         Channel channel = new Channel();
         channel.setName(dato.getName());
         channel.setDescription(dato.getDescription());
-
         channelRepository.save(channel);
-        System.out.println(channel);
-
         return dato;
     }
 
     private void creatMessage(Chat dato){
 
         Message mensaje = new Message();
-        mensaje.setChannelIdchannel(dato.getIdchannel());
-        mensaje.setUserIdclient(dato.getIdclient());
+        mensaje.setChannelIdchannel(dato.getChannelIdchannel());
+        mensaje.setUserIdclient(dato.getUserIdclient());
         mensaje.setUserUser(dato.getUser());
-        mensaje.setMessage("");
-        mensaje.setChannelIdchannel(0);
-        mensaje.setDate("");
-        mensaje.setIdmessage(0);
-        mensaje.setTime("");
-
+        mensaje.setMessage("Bienvenido!");
+        mensaje.setChannelIdchannel(1);
+        mensaje.setDate("2022");
+        mensaje.setTime("12:00");
         messageRepository.save(mensaje);
-
-
           }
-
-
-
 
 
     @GetMapping(path = "/findIdchat/{idclient}")

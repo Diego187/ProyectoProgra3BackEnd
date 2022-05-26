@@ -3,18 +3,10 @@ package com.umg.ProyectoProgra3.entity;
 public class Chat {
 
     private String user;
-    private int idclient;
+    private int userIdclient;
     private String name;
     private String description;
-    private int idchannel;
-
-    public int getIdchannel() {
-        return idchannel;
-    }
-
-    public void setIdchannel(int idchannel) {
-        this.idchannel = idchannel;
-    }
+    private int channelIdchannel;
 
     public String getUser() {
         return user;
@@ -24,12 +16,12 @@ public class Chat {
         this.user = user;
     }
 
-    public int getIdclient() {
-        return idclient;
+    public int getUserIdclient() {
+        return userIdclient;
     }
 
-    public void setIdclient(int idclient) {
-        this.idclient = idclient;
+    public void setUserIdclient(int userIdclient) {
+        this.userIdclient = userIdclient;
     }
 
     public String getName() {
@@ -46,5 +38,13 @@ public class Chat {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getChannelIdchannel() {
+        return channelIdchannel;
+    }
+
+    public void setChannelIdchannel(int channelIdchannel) {
+        this.channelIdchannel = channelIdchannel;
     }
 }
