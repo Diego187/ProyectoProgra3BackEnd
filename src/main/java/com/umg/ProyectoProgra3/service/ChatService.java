@@ -1,17 +1,13 @@
 package com.umg.ProyectoProgra3.service;
 
-import com.umg.ProyectoProgra3.entity.Channel;
-import com.umg.ProyectoProgra3.entity.Message;
-import com.umg.ProyectoProgra3.entity.MessageIdchannel;
-import com.umg.ProyectoProgra3.entity.User;
+import antlr.debug.MessageAdapter;
+import com.umg.ProyectoProgra3.entity.*;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageRepository;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import rx.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,9 +77,37 @@ public class ChatService {
 
 
     @PostMapping(path = "/add")
-    private Channel add(@RequestBody Channel channel){
-        return channelRepository.save(channel);
+    private Chat add(@RequestBody Chat dato){
+        creatMessage(dato);
+        Channel channel = new Channel();
+        channel.setName(dato.getName());
+        channel.setDescription(dato.getDescription());
+
+        channelRepository.save(channel);
+        System.out.println(channel);
+
+        return dato;
     }
+
+    private void creatMessage(Chat dato){
+
+        Message mensaje = new Message();
+        mensaje.setChannelIdchannel(dato.getIdchannel());
+        mensaje.setUserIdclient(dato.getIdclient());
+        mensaje.setUserUser(dato.getUser());
+        mensaje.setMessage("");
+        mensaje.setChannelIdchannel(0);
+        mensaje.setDate("");
+        mensaje.setIdmessage(0);
+        mensaje.setTime("");
+
+        messageRepository.save(mensaje);
+
+
+          }
+
+
+
 
 
     @GetMapping(path = "/findIdchat/{idclient}")
