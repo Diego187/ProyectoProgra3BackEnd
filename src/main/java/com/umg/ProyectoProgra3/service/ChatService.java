@@ -93,12 +93,11 @@ public class ChatService {
 
     private void creatMessage(Chat dato){
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter dtfh = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         List<Channel> mensajes = channelRepository.findAll();
         int mayor=0;
-
 
         for (Channel mensaje:mensajes
              ) {
@@ -111,11 +110,10 @@ public class ChatService {
         mensaje.setUserUser(dato.getUser());
         mensaje.setMessage("Bienvenido!");
         mensaje.setChannelIdchannel(mayor);
-        mensaje.setDate(dtf.format(LocalDateTime.now()));
-        mensaje.setTime(dtfh.format(LocalDateTime.now()));
+        mensaje.setDate(fecha.format(LocalDateTime.now()));
+        mensaje.setTime(hora.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
           }
-
 
 
     @GetMapping(path = "/findIdchat/{idclient}")
