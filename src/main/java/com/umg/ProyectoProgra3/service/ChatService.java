@@ -33,6 +33,9 @@ public class ChatService {
     UserRepository userRepository;
 
 
+
+
+
 /*
     public void prueba(){
         Integer[] numbers = {1, 2, 3, 4, 5};
@@ -80,11 +83,11 @@ public class ChatService {
 
     @PostMapping(path = "/add")
     private Chat add(@RequestBody Chat dato){
-        creatMessage(dato);
         Channel channel = new Channel();
         channel.setName(dato.getName());
         channel.setDescription(dato.getDescription());
         channelRepository.save(channel);
+        creatMessage(dato);
         return dato;
     }
 
@@ -93,16 +96,26 @@ public class ChatService {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter dtfh = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+        List<Channel> mensajes = channelRepository.findAll();
+        int mayor=0;
+
+
+        for (Channel mensaje:mensajes
+             ) {
+            mayor = mensaje.getIdchannel();
+        }
+
         Message mensaje = new Message();
         mensaje.setChannelIdchannel(dato.getChannelIdchannel());
         mensaje.setUserIdclient(dato.getUserIdclient());
         mensaje.setUserUser(dato.getUser());
         mensaje.setMessage("Bienvenido!");
-        mensaje.setChannelIdchannel(1);
+        mensaje.setChannelIdchannel(mayor);
         mensaje.setDate(dtf.format(LocalDateTime.now()));
         mensaje.setTime(dtfh.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
           }
+
 
 
     @GetMapping(path = "/findIdchat/{idclient}")
