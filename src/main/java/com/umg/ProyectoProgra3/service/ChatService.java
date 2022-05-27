@@ -1,6 +1,5 @@
 package com.umg.ProyectoProgra3.service;
 
-import antlr.debug.MessageAdapter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.umg.ProyectoProgra3.entity.*;
@@ -10,10 +9,9 @@ import com.umg.ProyectoProgra3.repository.MessageRepository;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import rx.Observable;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/chat")
@@ -32,22 +30,14 @@ public class ChatService {
     @Autowired
     UserRepository userRepository;
 
+    /*public void prueba(){
 
-
-
-
-/*
-    public void prueba(){
-        Integer[] numbers = {1, 2, 3, 4, 5};
-
-        Observable<Integer> miObservable = Observable.from(numbers);
-
+        Observable<Channel> miObservable = Observable.from(Object);
         Observable resultadoMap =
                 miObservable
                         .map((item) -> {
                             return item ;
                         });
-
         resultadoMap.subscribe((item) -> {
             System.out.println("item:" + item);
         });
@@ -79,8 +69,6 @@ public class ChatService {
         return channels;
     }
 
-
-
     @PostMapping(path = "/add")
     private Chat add(@RequestBody Chat dato){
         Channel channel = new Channel();
@@ -105,7 +93,6 @@ public class ChatService {
         }
 
         Message mensaje = new Message();
-        mensaje.setChannelIdchannel(dato.getChannelIdchannel());
         mensaje.setUserIdclient(dato.getUserIdclient());
         mensaje.setUserUser(dato.getUser());
         mensaje.setMessage("Bienvenido!");
@@ -114,7 +101,6 @@ public class ChatService {
         mensaje.setTime(hora.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
           }
-
 
     @GetMapping(path = "/findIdchat/{idclient}")
     private List<MessageIdchannel> findByMessageId(@PathVariable int idclient){
