@@ -9,7 +9,6 @@ import com.umg.ProyectoProgra3.repository.MessageRepository;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rx.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,22 +29,18 @@ public class ChatService {
     @Autowired
     UserRepository userRepository;
 
-    /*public void prueba(){
 
-        Observable<Channel> miObservable = Observable.from(Object);
-        Observable resultadoMap =
-                miObservable
-                        .map((item) -> {
-                            return item ;
-                        });
-        resultadoMap.subscribe((item) -> {
-            System.out.println("item:" + item);
-        });
-    }*/
+
 
     @GetMapping(path = "/find")
     private List<Message> find(){
-        return messageRepository.findAll();
+    return messageRepository.findAll();
+
+    }
+
+    @GetMapping(path = "/findChannel")
+    private List<Channel> findChannel(){
+        return channelRepository.findAll();
     }
 
     @GetMapping(path = "/findAll")
@@ -94,8 +89,8 @@ public class ChatService {
 
         Message mensaje = new Message();
         mensaje.setUserIdclient(dato.getUserIdclient());
-        mensaje.setUserUser(dato.getUser());
-        mensaje.setMessage("Bienvenido!");
+        mensaje.setUserUser("BOT");
+        mensaje.setMessage("¡Bienvenido!");
         mensaje.setChannelIdchannel(mayor);
         mensaje.setDate(fecha.format(LocalDateTime.now()));
         mensaje.setTime(hora.format(LocalDateTime.now()));
