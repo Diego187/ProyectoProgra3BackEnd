@@ -1,6 +1,5 @@
 package com.umg.ProyectoProgra3.service;
 
-import antlr.debug.MessageAdapter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.umg.ProyectoProgra3.entity.*;
@@ -10,10 +9,8 @@ import com.umg.ProyectoProgra3.repository.MessageRepository;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/chat")
@@ -51,22 +48,31 @@ public class ChatService {
     }*/
 
     @GetMapping(path = "/findOne/{idchannel}")
-    private List<Channel> findOne(@PathVariable int idchannel){
+    private List<Channel> findOne(@PathVariable int idchannel) {
         return channelRepository.findByIdchannel(idchannel);
+
+    }
+
+    @GetMapping(path = "/find")
+    private List<Message> find () {
+        return messageRepository.findAll();
+    }
+
+    @GetMapping(path = "/findChannel")
+    private List<Channel> findChannel () {
+        return channelRepository.findAll();
     }
 
     @GetMapping(path = "/findAll")
-    private List<Channel> findAll(){
+    private List<Channel> findAll () {
         List<Channel> channels = new ArrayList<>();
         channels = channelRepository.findAll();
 
         return channels;
     }
 
-
-
     @PostMapping(path = "/add")
-    private Chat add(@RequestBody Chat dato){
+    private Chat add (@RequestBody Chat dato){
         Channel channel = new Channel();
         channel.setName(dato.getName());
         channel.setDescription(dato.getDescription());
@@ -75,21 +81,16 @@ public class ChatService {
         return dato;
     }
 
-    private void creatMessage(Chat dato){
-
+    private void creatMessage (Chat dato){
         DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm");
-
         List<Channel> mensajes = channelRepository.findAll();
-        int mayor=0;
-
-        for (Channel mensaje:mensajes
-             ) {
+        int mayor = 0;
+        for (Channel mensaje : mensajes) {
             mayor = mensaje.getIdchannel();
         }
 
         Message mensaje = new Message();
-        mensaje.setChannelIdchannel(dato.getChannelIdchannel());
         mensaje.setUserIdclient(dato.getUserIdclient());
         mensaje.setUserUser("BOT");
         mensaje.setMessage("Bienvenido!");
@@ -97,20 +98,18 @@ public class ChatService {
         mensaje.setDate(fecha.format(LocalDateTime.now()));
         mensaje.setTime(hora.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
-          }
-
+    }
 
     @GetMapping(path = "/find/{idclient}")
-    private List<Channel> find(@PathVariable int idclient){
+    private List<Channel> find ( @PathVariable int idclient) {
 
         List<Channel> channels = channelRepository.findAll();
         List<Channel> channelsResponse = new ArrayList<>();
         List<MessageIdchannel> channelsUser = messageIdchannelRepository.findByMessageId(idclient);
 
-
-        for(MessageIdchannel channelUser : channelsUser){
-            for(Channel channel : channels){
-                if(channelUser.getChannelIdchannel() == channel.getIdchannel()){
+        for (MessageIdchannel channelUser : channelsUser) {
+            for (Channel channel : channels) {
+                if (channelUser.getChannelIdchannel() == channel.getIdchannel()) {
                     Channel channelSave = new Channel();
                     channelSave.setIdchannel(channel.getIdchannel());
                     channelSave.setName(channel.getName());
@@ -119,10 +118,12 @@ public class ChatService {
                 }
             }
         }
-
-
-
         return channelsResponse;
+    }
+
+    @GetMapping(path = "/findIdchat/{idclient}")
+    private List<MessageIdchannel> findByMessageId ( @PathVariable int idclient){
+        return messageIdchannelRepository.findByMessageId(idclient);
     }
 
 }
