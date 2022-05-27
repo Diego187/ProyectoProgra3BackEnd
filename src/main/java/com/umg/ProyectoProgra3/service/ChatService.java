@@ -33,9 +33,6 @@ public class ChatService {
     UserRepository userRepository;
 
 
-
-
-
 /*
     public void prueba(){
         Integer[] numbers = {1, 2, 3, 4, 5};
@@ -53,29 +50,16 @@ public class ChatService {
         });
     }*/
 
-    @GetMapping(path = "/find")
-    private List<Message> find(){
-        return messageRepository.findAll();
+    @GetMapping(path = "/findOne/{idchannel}")
+    private List<Channel> findOne(@PathVariable int idchannel){
+        return channelRepository.findByIdchannel(idchannel);
     }
 
     @GetMapping(path = "/findAll")
     private List<Channel> findAll(){
         List<Channel> channels = new ArrayList<>();
         channels = channelRepository.findAll();
-        List<Message> messages = new ArrayList<>();
-        List<User> users = new ArrayList<>();
-        users = userRepository.findAll();
-        for(Channel channel: channels) {
-            messages = channel.getMessageList();
-            for (Message message : messages) {
-                for (User user : users) {
-                    if (message.getUserIdclient() == user.getIdclient()) {
-                        message.setUserUser(user.getUser());
-                        break;
-                    }
-                }
-            }
-        }
+
         return channels;
     }
 
@@ -107,7 +91,7 @@ public class ChatService {
         Message mensaje = new Message();
         mensaje.setChannelIdchannel(dato.getChannelIdchannel());
         mensaje.setUserIdclient(dato.getUserIdclient());
-        mensaje.setUserUser(dato.getUser());
+        mensaje.setUserUser("BOT");
         mensaje.setMessage("Bienvenido!");
         mensaje.setChannelIdchannel(mayor);
         mensaje.setDate(fecha.format(LocalDateTime.now()));
@@ -116,9 +100,29 @@ public class ChatService {
           }
 
 
-    @GetMapping(path = "/findIdchat/{idclient}")
-    private List<MessageIdchannel> findByMessageId(@PathVariable int idclient){
-        return messageIdchannelRepository.findByMessageId(idclient);
+    @GetMapping(path = "/find/{idclient}")
+    private List<Channel> find(@PathVariable int idclient){
+
+        List<Channel> channels = channelRepository.findAll();
+        List<Channel> channelsResponse = new ArrayList<>();
+        List<MessageIdchannel> channelsUser = messageIdchannelRepository.findByMessageId(idclient);
+
+
+        for(MessageIdchannel channelUser : channelsUser){
+            for(Channel channel : channels){
+                if(channelUser.getChannelIdchannel() == channel.getIdchannel()){
+                    Channel channelSave = new Channel();
+                    channelSave.setIdchannel(channel.getIdchannel());
+                    channelSave.setName(channel.getName());
+                    channelSave.setDescription(channel.getDescription());
+                    channelsResponse.add(channelSave);
+                }
+            }
+        }
+
+
+
+        return channelsResponse;
     }
 
 }
