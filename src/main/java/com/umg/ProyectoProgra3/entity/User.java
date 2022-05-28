@@ -8,9 +8,6 @@ import java.util.List;
 @Entity
 @Table(name ="user")
 public class User implements Serializable {
-
-    private static final long serialVersionUID = 3760988163877761705L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

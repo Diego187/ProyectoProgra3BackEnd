@@ -6,8 +6,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-    private static final long serialVersionUID = 3760988163877761705L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
