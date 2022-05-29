@@ -18,10 +18,10 @@ public class LoginService {
     @Autowired
     UserRepository userRepository;
 
- //Servicio que devuelve un objeto del user si lo encuentra si es en blanco o null es porque no pasa la validacion
+    //Servicio que devuelve un objeto del user si lo encuentra si es en blanco o null es porque no pasa la validacion
     @PostMapping(path = "/user")
-    private List<User>  loginTeacher(@RequestBody Login credentials){
-        return userRepository.findByUserAndPassword (credentials.getUser(), credentials.getPass());
+    private List<User> loginTeacher(@RequestBody Login credentials) {
+        return userRepository.findByUserAndPassword(credentials.getUser(), credentials.getPass());
     }
 
 }

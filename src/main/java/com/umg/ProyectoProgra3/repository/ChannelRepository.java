@@ -9,6 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Repository("channelRepository")
-public interface ChannelRepository  extends JpaRepository<Channel, Serializable> {
+public interface ChannelRepository extends JpaRepository<Channel, Serializable> {
     public List<Channel> findByIdchannel(int idchannel);
 }

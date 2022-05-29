@@ -11,11 +11,11 @@ import java.util.Optional;
 
 
 @Repository("userRepository")
-public interface UserRepository extends JpaRepository<User, Serializable>{
+public interface UserRepository extends JpaRepository<User, Serializable> {
     public List<User> findByUserAndPassword(String user, String password);
 
     @Query(value = "select count(idclient) from user  ", nativeQuery = true)
-    int countUserBy() ;
+    int countUserBy();
 
 }
 

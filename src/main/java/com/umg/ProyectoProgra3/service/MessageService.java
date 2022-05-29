@@ -14,8 +14,8 @@ public class MessageService {
     MessageRepository messageRepository;
 
     @PostMapping(path = "/add")
-    private HttpStatus add(@RequestBody Message message){
+    private HttpStatus add(@RequestBody Message message) {
         messageRepository.save(message);
-     return HttpStatus.OK;
+        return HttpStatus.OK;
     }
 }

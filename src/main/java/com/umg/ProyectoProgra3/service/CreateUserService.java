@@ -4,6 +4,7 @@ import com.umg.ProyectoProgra3.entity.User;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -14,14 +15,14 @@ public class CreateUserService {
     UserRepository userRepository;
 
     @PostMapping(path = "/add")
-    private User add(@RequestBody User user){
+    private User add(@RequestBody User user) {
         String newUser = newUser(user);
         user.setUser(newUser);
         userRepository.save(user);
         return user;
     }
 
-    private String newUser(User user){
+    private String newUser(User user) {
         List<User> userList = find();
         int cont = userList.size();
         cont = cont + 1;
@@ -34,15 +35,17 @@ public class CreateUserService {
     }
 
     @GetMapping(path = "/findAll")
-    private List<User> find(){
+    private List<User> find() {
         return userRepository.findAll();
     }
 
     @GetMapping(path = "/count")
-    private int countUserBy() { return userRepository.countUserBy();}
+    private int countUserBy() {
+        return userRepository.countUserBy();
+    }
 
     @PostMapping(path = "/modify")
-    private User modify(@RequestBody User user){
+    private User modify(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }

@@ -2,6 +2,7 @@ package com.umg.ProyectoProgra3.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import com.umg.ProyectoProgra3.entity.*;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
@@ -9,6 +10,7 @@ import com.umg.ProyectoProgra3.repository.MessageRepository;
 import com.umg.ProyectoProgra3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,17 +56,17 @@ public class ChatService {
     }
 
     @GetMapping(path = "/find")
-    private List<Message> find () {
+    private List<Message> find() {
         return messageRepository.findAll();
     }
 
     @GetMapping(path = "/findChannel")
-    private List<Channel> findChannel () {
+    private List<Channel> findChannel() {
         return channelRepository.findAll();
     }
 
     @GetMapping(path = "/findAll")
-    private List<Channel> findAll () {
+    private List<Channel> findAll() {
         List<Channel> channels = new ArrayList<>();
         channels = channelRepository.findAll();
 
@@ -72,7 +74,7 @@ public class ChatService {
     }
 
     @PostMapping(path = "/add")
-    private Chat add (@RequestBody Chat dato){
+    private Chat add(@RequestBody Chat dato) {
         Channel channel = new Channel();
         channel.setName(dato.getName());
         channel.setDescription(dato.getDescription());
@@ -81,7 +83,7 @@ public class ChatService {
         return dato;
     }
 
-    private void creatMessage (Chat dato){
+    private void creatMessage(Chat dato) {
         DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm");
         List<Channel> mensajes = channelRepository.findAll();
@@ -101,7 +103,7 @@ public class ChatService {
     }
 
     @GetMapping(path = "/find/{idclient}")
-    private List<Channel> find ( @PathVariable int idclient) {
+    private List<Channel> find(@PathVariable int idclient) {
 
         List<Channel> channels = channelRepository.findAll();
         List<Channel> channelsResponse = new ArrayList<>();
@@ -122,8 +124,9 @@ public class ChatService {
     }
 
     @GetMapping(path = "/findIdchat/{idclient}")
-    private List<MessageIdchannel> findByMessageId ( @PathVariable int idclient){
+    private List<MessageIdchannel> findByMessageId(@PathVariable int idclient) {
         return messageIdchannelRepository.findByMessageId(idclient);
     }
+
 
 }
