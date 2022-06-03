@@ -3,10 +3,7 @@ package com.umg.ProyectoProgra3.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.umg.ProyectoProgra3.entity.*;
-import com.umg.ProyectoProgra3.repository.ChannelRepository;
-import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
-import com.umg.ProyectoProgra3.repository.MessageRepository;
-import com.umg.ProyectoProgra3.repository.UserRepository;
+import com.umg.ProyectoProgra3.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/chat")
 @CrossOrigin
-public class ChatService {
+class ChatService {
 
     @Autowired
     ChannelRepository channelRepository;
@@ -30,31 +27,13 @@ public class ChatService {
     @Autowired
     UserRepository userRepository;
 
-
-    @GetMapping(path = "/findOne/{idchannel}")
+    //Este Get obtiene un canal, con la lista de mns por ID
+   @GetMapping(path = "/findOne/{idchannel}")
     private List<Channel> findOne(@PathVariable int idchannel) {
         return channelRepository.findByIdchannel(idchannel);
-
     }
 
-    @GetMapping(path = "/find")
-    private List<Message> find() {
-        return messageRepository.findAll();
-    }
-
-    @GetMapping(path = "/findChannel")
-    private List<Channel> findChannel() {
-        return channelRepository.findAll();
-    }
-
-    @GetMapping(path = "/findAll")
-    private List<Channel> findAll() {
-        List<Channel> channels = new ArrayList<>();
-        channels = channelRepository.findAll();
-
-        return channels;
-    }
-
+    //Este Post agrega un canal
     @PostMapping(path = "/add")
     private Chat add(@RequestBody Chat dato) {
         Channel channel = new Channel();
@@ -64,7 +43,7 @@ public class ChatService {
         creatMessage(dato);
         return dato;
     }
-
+    //Crea un mensaje al crear el canal
     private void creatMessage(Chat dato) {
         DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH:mm");
@@ -83,7 +62,7 @@ public class ChatService {
         mensaje.setTime(hora.format(LocalDateTime.now()));
         messageRepository.save(mensaje);
     }
-
+     //Get para buscar cliente por id
     @GetMapping(path = "/find/{idclient}")
     private List<Channel> find(@PathVariable int idclient) {
 
@@ -105,10 +84,6 @@ public class ChatService {
         return channelsResponse;
     }
 
-    @GetMapping(path = "/findIdchat/{idclient}")
-    private List<MessageIdchannel> findByMessageId(@PathVariable int idclient) {
-        return messageIdchannelRepository.findByMessageId(idclient);
-    }
 
 
 }

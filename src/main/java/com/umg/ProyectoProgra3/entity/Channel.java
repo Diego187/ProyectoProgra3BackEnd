@@ -1,5 +1,6 @@
 package com.umg.ProyectoProgra3.entity;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
