@@ -2,7 +2,6 @@ package com.umg.ProyectoProgra3.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import com.umg.ProyectoProgra3.entity.*;
 import com.umg.ProyectoProgra3.repository.ChannelRepository;
 import com.umg.ProyectoProgra3.repository.MessageIdchannelRepository;
@@ -31,23 +30,6 @@ public class ChatService {
     @Autowired
     UserRepository userRepository;
 
-
-/*
-    public void prueba(){
-        Integer[] numbers = {1, 2, 3, 4, 5};
-
-        Observable<Integer> miObservable = Observable.from(numbers);
-
-        Observable resultadoMap =
-                miObservable
-                        .map((item) -> {
-                            return item ;
-                        });
-
-        resultadoMap.subscribe((item) -> {
-            System.out.println("item:" + item);
-        });
-    }*/
 
     @GetMapping(path = "/findOne/{idchannel}")
     private List<Channel> findOne(@PathVariable int idchannel) {
