@@ -33,6 +33,12 @@ class ChatService {
         return channelRepository.findByIdchannel(idchannel);
     }
 
+    @GetMapping(path = "/prueba")
+    public String prueba()
+    {
+        return "test 134324kjdfslafjl";
+    }
+
     //Este Post agrega un canal
     @PostMapping(path = "/add")
     private Chat add(@RequestBody Chat dato) {
