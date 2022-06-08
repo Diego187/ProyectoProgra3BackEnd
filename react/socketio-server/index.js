@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 //inicia server
 const server = app.listen(app.get('port'), ()=>{
-    console.log('server on port', app.get('port'));
+    console.log('servidor por el puerto', app.get('port'));
 });
 
 //websockets
